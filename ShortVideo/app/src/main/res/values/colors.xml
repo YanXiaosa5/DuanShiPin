@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#ffffff</color>
+    <color name="white_smoke">#f5f5f5</color>
+    <color name="color_theme">#ff0099cc</color>
+    <color name="translucent_black">#80000000</color>
+    <color name="translucent_black2">#30000000</color>
+    <color name="cpb_grey">#ffdedede</color>
+    <color name="bg_gray">#f1f1f1</color>
+    <color name="cpb_blue">#ff0099cc</color>
+    <color name="common_style_text">#000</color>
+    <color name="common_style_title">#fafafa</color>
+    <color name="text_grey">#ddd</color>
+    <color name="split">#ededed</color>
+    <color name="content_black1">#333333</color>
+    <color name="black">#000</color>
+    <color name="color_666">#ccc</color>
+    <color name="content_black_light">#666</color>
+
+    <color name="transparent">#00ffffff</color>
+    <color name="divider">#ffd2d2d2</color>
+    <color name="color_da">#dadada</color>
+    <color name="color_theme_nav">#000</color>
+    <color name="color_blue">#59a9f9</color>
+    <color name="color_999">#999</color>
+    <color name="color_bbb">#bbb</color>
+    <color name="color_d8">#d8d8d8</color>
+    <color name="color_3f">#3f3f3f</color>
+    <color name="color_a0">#a0a0a0</color>
+    <color name="color_f0">#f0f0f0</color>
+    <color name="color_a8">#a8a8a8</color>
+    <color name="color_d9">#d9d9d9</color>
+    <color name="color_f7">#F0F0F4</color>
+    <!-- 线的颜色 -->
+    <color name="view_line">#999999</color>
+    <!-- 索引栏的颜色 -->
+    <color name="sidebar_bg_color">#dadada</color>
+    <color name="color_e2">#e2e2e2</color>
+    <color name="color_status1">#4a9df2</color>
+    <color name="color_status2">#7fbb64</color>
+    <color name="color_status3">#ff5c55</color>
+    <color name="detail_date1">#ffc300</color>
+    <color name="detail_time1">#ff7e00</color>
+    <color name="detail_date2">#ff8781</color>
+    <color name="detail_time2">#ff5851</color>
+    <color name="payroll">#fb9343</color>
+    <color name="white_border">#fee3de</color>
+    <color name="color_72">#727272</color>
+    <color name="color_75">#757575</color>
+    <color name="color_35">#353535</color>
+    <color name="colorRedBg">#fa5148</color>
+    <color name="grayLine">#C3C3C3</color> <!--  线-->
+    <color name="app_btn_red">#ff4d67</color>
+    <color name="common_bg">#F5F5F5</color>
+    <color name="app_title_bg">#ff4c66</color>
+    <color name="TextColorGray">#FF505050</color>
+    <color name="red">#ff4c66</color>r>
+    <color name="red2">#DE3434</color>
+    <color name="flash_like">#f1938f</color>
+    <color name="flash_unlike">#86ca9b</color>
+    <color name="green_light">#ffffff80</color>
+    <color name="nutrition_blue">#0277FF</color>
+    <color name="nutrition_green">#0DBE11</color>
+    <color name="nutrition_red">#DE3434</color>
+    <color name="challenge_bg">#f7f7f7</color>
+    <color name="progress_day">#ff669900</color>
+    <color name="progress_week">#ff0099cc</color>
+    <color name="edit_focus_error">#FFEC00</color>
+    <color name="status_bar_color">#35000000</color>
+
+</resources>

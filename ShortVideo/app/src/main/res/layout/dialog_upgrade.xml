@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/white_smoke"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_theme"
+            android:focusable="false"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:focusable="false"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:text="@string/dialog_upgrade_version_name"
+                    android:textColor="@color/translucent_black" />
+
+                <TextView
+                    android:id="@+id/version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:textColor="@color/translucent_black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:focusable="false"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:text="@string/dialog_upgrade_version_note"
+                    android:textColor="@color/translucent_black" />
+
+                <TextView
+                    android:id="@+id/message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:textColor="@color/translucent_black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:focusable="false"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:text="@string/dialog_upgrade_version_date"
+                    android:textColor="@color/translucent_black" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:textColor="@color/translucent_black" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.0px"
+            android:background="#ffd0d0d0"
+            android:focusable="false" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60.0dip"
+            android:layout_gravity="bottom"
+            android:background="@color/cpb_grey"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.jumang.shortvideo.views.HorizontalProgressBarWithNumber
+                android:id="@+id/id_progressbar01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:focusable="false"
+                android:padding="5dp"
+                android:visibility="gone"
+                app:progress_text_color="@color/cpb_blue" />
+
+            <Button
+                android:id="@+id/positiveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="40.0dip"
+                android:background="@drawable/shape_corner_orange"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingEnd="35dp"
+                android:paddingStart="35dp"
+                android:text="@string/dialog_upgrade_now"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/negativeButton"
+                android:layout_width="114.0dip"
+                android:layout_height="40.0dip"
+                android:layout_marginLeft="40.0dip"
+                android:background="@drawable/shape_corner_grey2"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textColor="@color/payroll" />
+
+            <Button
+                android:id="@+id/dialog_full_install"
+                android:layout_width="wrap_content"
+                android:layout_height="40.0dip"
+                android:background="@drawable/shape_corner_orange"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingEnd="35dp"
+                android:paddingStart="35dp"
+                android:text="@string/dialog_full_install"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

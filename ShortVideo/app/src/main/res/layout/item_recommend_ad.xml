@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.jumang.shortvideo.views.MyVideoView
+        android:id="@+id/video_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_upload"
+        android:background="@color/bg_gray"
+        android:clickable="false"
+        android:focusable="false"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/image_re_ad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_upload"
+        android:scaleType="fitXY"
+        android:src="@color/black" />
+
+    <TextView
+        android:id="@+id/title_ad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/btn_upload"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/btn_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_above="@id/bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="5dp"
+        android:background="@drawable/shape_corner_blue"
+        android:clickable="false"
+        android:focusable="false"
+        android:paddingEnd="70dp"
+        android:paddingStart="70dp"
+        android:text="下载"
+        android:textColor="@color/nutrition_blue"
+        android:textSize="12sp" />
+
+</RelativeLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/status_bar_color"
+    android:paddingTop="23dp">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/video_list"
+        android:name="com.jumang.shortvideo.fragment.MainFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        tools:context="ccom.jumang.shortvideo.fragment.MainFragment"
+        tools:listitem="@layout/item_main_video" />
+</android.support.v4.widget.SwipeRefreshLayout>

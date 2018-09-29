@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="90dp"
+        android:layout_height="60dp"
+        android:scaleType="centerCrop"
+        android:src="@color/bg_gray" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@id/image"
+        android:ellipsize="end"
+        android:lines="2"
+        android:text="这是标题"
+        android:textColor="@color/content_black1" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginBottom="@dimen/dip_5"
+        android:layout_marginEnd="@dimen/dip_5"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@id/image"
+        android:drawablePadding="5dp"
+        android:drawableStart="@mipmap/icon_cellphone"
+        android:text="00:00"
+        android:textColor="@color/content_black_light"
+        android:textSize="12sp" />
+
+</RelativeLayout>

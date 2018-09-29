@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="HorizontalProgressBarWithNumber">
+        <attr name="progress_unreached_color" format="color" />
+        <attr name="progress_reached_color" format="color" />
+        <attr name="progress_reached_bar_height" format="dimension" />
+        <attr name="progress_unreached_bar_height" format="dimension" />
+        <attr name="progress_text_size" format="dimension" />
+        <attr name="progress_text_color" format="color" />
+        <attr name="progress_text_offset" format="dimension" />
+        <attr name="progress_text_visibility" format="enum">
+            <enum name="visible" value="0" />
+            <enum name="invisible" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="TitleBarView">
+        <attr name="titleText" format="string" />
+        <attr name="leftVisible" format="boolean" />
+        <attr name="leftText" format="string" />
+        <attr name="leftDrawImage" format="reference" />
+        <attr name="rightVisible" format="boolean" />
+        <attr name="rightText" format="string" />
+        <attr name="rightDrawImage" format="reference" />
+        <attr name="titleDrawImage" format="reference" />
+        <attr name="rightTextSize" format="dimension" />
+        <attr name="titleBackgroundColor" format="color" />
+        <attr name="contentBackgroundColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="scaleType" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="NavBottomView">
+        <attr name="navHeight" format="dimension" />
+        <attr name="backgroundColor" format="color" />
+        <attr name="textCheckedColor" format="color" />
+        <attr name="textUnCheckedColor" format="color" />
+        <attr name="navLeftText" format="string" />
+        <attr name="leftCheckedImage" format="reference" />
+        <attr name="leftUnCheckedImage" format="reference" />
+        <attr name="middleText" format="string" />
+        <attr name="middleCheckedImage" format="reference" />
+        <attr name="middleUnCheckedImage" format="reference" />
+        <attr name="navRightText" format="string" />
+        <attr name="rightCheckedImage" format="reference" />
+        <attr name="rightUnCheckedImage" format="reference" />
+        <attr name="navTextSize" format="dimension" />
+
+        <attr name="navTab0Text" format="string" />
+        <attr name="navTab0CheckedImage" format="reference" />
+        <attr name="navTabOUnCheckedImage" format="reference" />
+
+        <attr name="navTab1Text" format="string" />
+        <attr name="navTab1CheckedImage" format="reference" />
+        <attr name="navTab1UnCheckedImage" format="reference" />
+
+        <attr name="navTab2Text" format="string" />
+        <attr name="navTab2CheckedImage" format="reference" />
+        <attr name="navTab2UnCheckedImage" format="reference" />
+
+        <attr name="navTab3Text" format="string" />
+        <attr name="navTab3CheckedImage" format="reference" />
+        <attr name="navTab3UnCheckedImage" format="reference" />
+
+        <attr name="navTab4Text" format="string" />
+        <attr name="navTab4CheckedImage" format="reference" />
+        <attr name="navTab4UnCheckedImage" format="reference" />
+
+        <attr name="navTab5Text" format="string" />
+        <attr name="navTab5CheckedImage" format="reference" />
+        <attr name="navTab5UnCheckedImage" format="reference" />
+    </declare-styleable>
+    <attr name="SwipeBackLayoutStyle" format="reference" />
+    <declare-styleable name="SwipeBackLayout">
+        <attr name="edge_size" format="dimension" />
+        <attr name="edge_flag">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+            <enum name="bottom" value="2" />
+            <enum name="all" value="3" />
+        </attr>
+        <attr name="shadow_left" format="reference" />
+        <attr name="shadow_right" format="reference" />
+        <attr name="shadow_bottom" format="reference" />
+    </declare-styleable>
+
+</resources>

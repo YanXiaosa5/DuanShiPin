@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.jumang.shortvideo.views.CustomViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/main_split" />
+
+    <View
+        android:id="@+id/main_split"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@+id/main_nav_view"
+        android:background="@color/color_da" />
+
+    <com.jumang.shortvideo.views.NavBottomView
+        android:id="@+id/main_nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>

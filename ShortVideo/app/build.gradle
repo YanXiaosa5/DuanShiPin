@@ -1,0 +1,104 @@
+apply plugin: 'com.android.application'
+apply plugin: 'walle'
+
+walle {
+    // 指定渠道包的输出路径
+    apkOutputFolder = new File("${project.buildDir}/outputs/channels")
+    // 定制渠道包的APK的文件名称
+    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk'
+    // 渠道配置文件
+    channelFile = new File("${project.getProjectDir()}/channel")
+}
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.jumang.shortvideo"
+        minSdkVersion 17
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+
+        ndk {
+            abiFilters /*"armeabi",*/ "armeabi-v7a"/*,"x86","arm64-v8a"*/
+        }
+    }
+    packagingOptions {//加上这写代码
+        pickFirst 'META-INF/*'
+    }
+    signingConfigs {
+        release {
+            storeFile file("../fanhua-realease.jks")
+            storePassword "123654"
+            keyAlias "ShortVideo"
+            keyPassword "123654"
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    productFlavors {
+        productFlavors.all {
+            flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_NAME: name]
+        }
+    }
+
+    //把这拷进去
+    //把这拷进去
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.android.support:support-v4:28.0.0-rc01'
+    implementation 'com.android.support:appcompat-v7:28.0.0-rc01'
+    implementation "com.android.support:recyclerview-v7:28.0.0-rc01"
+
+    implementation 'com.meituan.android.walle:library:1.1.6'
+
+    implementation 'me.drakeet.multitype:multitype:3.4.4'
+    implementation 'com.jakewharton:butterknife:8.7.0'
+
+    implementation 'com.umeng.sdk:common:1.5.3'
+    implementation 'com.umeng.sdk:utdid:1.1.5.3'
+    implementation 'com.umeng.sdk:analytics:7.5.0'
+
+
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.41'
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+
+    implementation 'com.shuyu:gsyVideoPlayer-java:6.0.0-beta'
+    //更多ijk的编码支持
+    implementation 'com.shuyu:gsyVideoPlayer-ex_so:6.0.0-beta'
+    implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '8.5.23'
+}

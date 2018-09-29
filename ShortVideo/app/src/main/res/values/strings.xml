@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">趣看看</string>
+    <string name="dialog_upgrade_version_name">版本名称：</string>
+    <string name="dialog_upgrade_version_note">更新说明：</string>
+    <string name="dialog_upgrade_version_date">发布日期：</string>
+    <string name="dialog_upgrade_now">立即升级</string>
+    <string name="dialog_full_install">重新安装</string>
+
+    <string name="nav_text1">首页</string>
+    <string name="nav_text2">推荐</string>
+    <string name="nav_text3">频道</string>
+    <string name="nav_text4">我的</string>
+
+    <string name="exit">退出</string>
+    <string name="cancel">取消</string>
+
+    <string name="exit_tip">再按一次退出</string>
+    <string name="checking_upgrade">检查更新中..</string>
+    <string name="already_latest">当前已是最新版本！</string>
+    <string name="start_download">开始下载</string>
+    <string name="download_success">下载成功</string>
+    <string name="download_failed">下载失败，请重试</string>
+    <string name="not_found_apk">没有找到安装文件，请重新下载</string>
+
+</resources>
