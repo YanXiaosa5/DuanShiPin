@@ -89,7 +89,6 @@ public class ViewPagerLayoutManager extends LinearLayoutManager {
                     int positionSettling = getPosition(viewSettling);
                 }
                 break;
-
         }
     }
 
@@ -142,10 +141,9 @@ public class ViewPagerLayoutManager extends LinearLayoutManager {
         public void onChildViewDetachedFromWindow(View view) {
             if (mDrift >= 0){
                 if (mOnViewPagerListener != null) mOnViewPagerListener.onPageRelease(true,getPosition(view));
-            }else {
+            } else {
                 if (mOnViewPagerListener != null) mOnViewPagerListener.onPageRelease(false,getPosition(view));
             }
-
         }
     };
 }

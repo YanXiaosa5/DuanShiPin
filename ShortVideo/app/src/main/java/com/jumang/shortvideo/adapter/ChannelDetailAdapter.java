@@ -3,6 +3,7 @@ package com.jumang.shortvideo.adapter;
 import android.content.Context;
 import android.widget.ImageView;
 
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.jumang.shortvideo.GlideApp;
@@ -32,6 +33,8 @@ public class ChannelDetailAdapter extends BaseQuickAdapter<HomeVideoBean, BaseVi
         GlideApp.with(context)
                 .load(videoBean.getVideoImg())
                 .transition(withCrossFade()).override(DensityUtils.dp2px(context,120),DensityUtils.dp2px(context,150))
+                .skipMemoryCache(false)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into((ImageView) holder.getView(R.id.image));
 
         holder.setText(R.id.time, String.format("%s赞", MUtils.getNumWan(videoBean.getPraiseCount())));

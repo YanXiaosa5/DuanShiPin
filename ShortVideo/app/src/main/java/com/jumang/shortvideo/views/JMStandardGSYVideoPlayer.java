@@ -3,19 +3,27 @@ package com.jumang.shortvideo.views;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.jumang.shortvideo.R;
+import com.jumang.shortvideo.base.GSYVideoCallBack;
 import com.shuyu.gsyvideoplayer.utils.Debuger;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
 import moe.codeest.enviews.ENDownloadView;
 
-public class MyVideoView extends StandardGSYVideoPlayer {
+public class JMStandardGSYVideoPlayer extends StandardGSYVideoPlayer{
 
     private View mPause;
 
-    public MyVideoView(Context context, AttributeSet attrs) {
+    public JMStandardGSYVideoPlayer(Context context, Boolean fullFlag) {
+        super(context, fullFlag);
+    }
+
+    public JMStandardGSYVideoPlayer(Context context) {
+        super(context);
+    }
+
+    public JMStandardGSYVideoPlayer(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -25,8 +33,8 @@ public class MyVideoView extends StandardGSYVideoPlayer {
         mPause = findViewById(R.id.iv_pause);
     }
 
-    public LinearLayout getTopView() {
-        return (LinearLayout) mTopContainer;
+    public View getPuase(){
+        return mPause;
     }
 
     @Override
@@ -35,12 +43,25 @@ public class MyVideoView extends StandardGSYVideoPlayer {
     }
 
     @Override
-    protected void changeUiToNormal() {
+    protected void onClickUiToggle() {//点击视频弹出布局时的事件
+        super.onClickUiToggle();
+        System.out.println("onClickUiToggle");
+    }
+
+    @Override
+    protected void touchDoubleUp() {//双击暂停/开始
+        super.touchDoubleUp();
+    }
+
+    @Override
+    protected void changeUiToNormal() {//视频表面显示内容
         Debuger.printfLog("changeUiToNormal");
+
         setViewShowState(mPause,INVISIBLE);
+
         setViewShowState(mTopContainer, VISIBLE);
         setViewShowState(mBottomContainer, INVISIBLE);
-        setViewShowState(mStartButton, GONE);
+        setViewShowState(mStartButton, INVISIBLE);
         setViewShowState(mLoadingProgressBar, INVISIBLE);
         setViewShowState(mThumbImageViewLayout, VISIBLE);
         setViewShowState(mBottomProgressBar, INVISIBLE);
@@ -53,17 +74,15 @@ public class MyVideoView extends StandardGSYVideoPlayer {
     }
 
     @Override
-    protected void changeUiToPlayingClear() {
-        setViewShowState(mPause,VISIBLE);
-        super.changeUiToPlayingClear();
+    protected void clickStartIcon() {
+        super.clickStartIcon();
     }
 
     @Override
     protected void changeUiToPauseShow() {
         Debuger.printfLog("changeUiToPauseShow");
 
-        setViewShowState(mPause,VISIBLE);
-
+        isPlaying();
         setViewShowState(mTopContainer, VISIBLE);
         setViewShowState(mBottomContainer, VISIBLE);
         setViewShowState(mStartButton, INVISIBLE);
@@ -82,7 +101,7 @@ public class MyVideoView extends StandardGSYVideoPlayer {
     @Override
     protected void changeUiToPlayingShow() {
         Debuger.printfLog("changeUiToPlayingShow");
-        setViewShowState(mPause,INVISIBLE);
+        isPlaying();
         setViewShowState(mTopContainer, VISIBLE);
         setViewShowState(mBottomContainer, VISIBLE);
         setViewShowState(mStartButton, GONE);
@@ -100,7 +119,6 @@ public class MyVideoView extends StandardGSYVideoPlayer {
     @Override
     protected void changeUiToPreparingShow() {
         Debuger.printfLog("changeUiToPreparingShow");
-
         setViewShowState(mTopContainer, VISIBLE);
         setViewShowState(mBottomContainer, VISIBLE);
         setViewShowState(mStartButton, INVISIBLE);
@@ -120,7 +138,6 @@ public class MyVideoView extends StandardGSYVideoPlayer {
     @Override
     protected void changeUiToPlayingBufferingShow() {
         Debuger.printfLog("changeUiToPlayingBufferingShow");
-
         setViewShowState(mTopContainer, VISIBLE);
         setViewShowState(mBottomContainer, VISIBLE);
         setViewShowState(mStartButton, INVISIBLE);
@@ -137,5 +154,13 @@ public class MyVideoView extends StandardGSYVideoPlayer {
         }
     }
 
+    @Override
+    protected void changeUiToPlayingClear() {
+        isPlaying();
+        super.changeUiToPlayingClear();
+    }
 
+    public void isPlaying(){
+        setViewShowState(mPause, getGSYVideoManager().isPlaying()?INVISIBLE:VISIBLE);
+    }
 }

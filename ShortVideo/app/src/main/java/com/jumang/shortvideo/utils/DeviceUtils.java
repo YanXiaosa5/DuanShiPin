@@ -9,6 +9,8 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.text.TextUtils;
 
+import com.umeng.commonsdk.statistics.common.DeviceConfig;
+
 import java.lang.reflect.Method;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
@@ -128,6 +130,23 @@ public class DeviceUtils {
             }
         }
         return result;
+    }
+
+    /**
+     * 获取设备信息
+     * @param context
+     * @return
+     */
+    public static String[] getTestDeviceInfo(Context context){
+        String[] deviceInfo = new String[2];
+        try {
+            if(context != null){
+                deviceInfo[0] = DeviceConfig.getDeviceIdForGeneral(context);
+                deviceInfo[1] = DeviceConfig.getMac(context);
+            }
+        } catch (Exception e){
+
+        } return deviceInfo;
     }
 
 

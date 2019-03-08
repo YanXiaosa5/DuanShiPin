@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'walle'
-
 walle {
     // 指定渠道包的输出路径
     apkOutputFolder = new File("${project.buildDir}/outputs/channels")
@@ -86,9 +85,9 @@ dependencies {
     implementation 'com.jakewharton:butterknife:8.7.0'
 
     implementation 'com.umeng.sdk:common:1.5.3'
-    implementation 'com.umeng.sdk:utdid:1.1.5.3'
     implementation 'com.umeng.sdk:analytics:7.5.0'
 
+//    implementation 'com.umeng.sdk:utdid:1.1.5.3'
 
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.google.code.gson:gson:2.8.2'
@@ -101,4 +100,7 @@ dependencies {
     //更多ijk的编码支持
     implementation 'com.shuyu:gsyVideoPlayer-ex_so:6.0.0-beta'
     implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '8.5.23'
+
+
+
 }

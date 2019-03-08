@@ -51,10 +51,16 @@
 
     </RelativeLayout>
 
-    <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
-        android:id="@+id/detail_player"
+    <!--<com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer-->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="220dp" />
+        android:layout_height="220dp">
+        <com.jumang.shortvideo.views.JMStandardGSYVideoPlayer
+            android:id="@+id/detail_player"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -30,7 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * A simple {@link Fragment} subclass.
+ * 主页频道
  */
 public class ChannelFragment extends BaseFragment {
 

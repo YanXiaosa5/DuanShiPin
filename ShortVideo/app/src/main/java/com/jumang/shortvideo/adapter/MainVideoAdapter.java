@@ -6,20 +6,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.util.MultiTypeDelegate;
-import com.jumang.shortvideo.GlideApp;
 import com.jumang.shortvideo.R;
 import com.jumang.shortvideo.api.Api;
+import com.jumang.shortvideo.base.GSYVideoCallBack;
 import com.jumang.shortvideo.bean.HomeVideoBean;
 import com.jumang.shortvideo.utils.MUtils;
 import com.jumang.shortvideo.views.CircleImageView;
-import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack;
-import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
+import com.jumang.shortvideo.views.JMStandardGSYVideoPlayer;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMImage;
@@ -111,7 +109,7 @@ public class MainVideoAdapter extends BaseQuickAdapter<HomeVideoBean, BaseViewHo
                 } else {
                     holder.getView(R.id.image).setVisibility(View.VISIBLE);
                     holder.getView(R.id.detail_player).setVisibility(View.GONE);
-                    GlideApp.with(context)
+                    Glide.with(context)
                             .load(videoBean.getAdImg())
                             .transition(withCrossFade())
                             .into((ImageView) holder.getView(R.id.image));
@@ -137,7 +135,7 @@ public class MainVideoAdapter extends BaseQuickAdapter<HomeVideoBean, BaseViewHo
      * @param videoImg
      */
     private void setVideoControl(BaseViewHolder holder, String videoUrl, String title, String videoImg) {
-        StandardGSYVideoPlayer gsyVideoPlayer = holder.getView(R.id.detail_player);
+        JMStandardGSYVideoPlayer gsyVideoPlayer = holder.getView(R.id.detail_player);
         gsyVideoPlayer.setUp(videoUrl, true, null,
                 null, title);
         //gsyVideoPlayer.getTitleTextView().setVisibility(View.GONE);
@@ -161,22 +159,27 @@ public class MainVideoAdapter extends BaseQuickAdapter<HomeVideoBean, BaseViewHo
         ImageView imageView = new ImageView(context);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setImageResource(R.mipmap.default_video_bg);
-
-        GlideApp.with(context)
+        Glide.with(context)
                 .load(videoImg)
                 .transition(withCrossFade())
                 .into(imageView);
         gsyVideoPlayer.setThumbImageView(imageView);
-        gsyVideoPlayer.setDismissControlTime(1000);
+        gsyVideoPlayer.setDismissControlTime(3000);
 
-        gsyVideoPlayer.setVideoAllCallBack(new GSYSampleCallBack() {
+        gsyVideoPlayer.getStartButton().setVisibility(View.GONE);
+        gsyVideoPlayer.setThumbPlay(true);//设置触摸封面播放
+        gsyVideoPlayer.setLooping(true);
+        gsyVideoPlayer.setVideoAllCallBack(new GSYVideoCallBack() {
+
             @Override
-            public void onClickStop(String url, Object... objects) {
-                super.onClickStop(url, objects);
-//                Toast.makeText(context, "onClickStop", Toast.LENGTH_SHORT).show();
+            public void onClickBlank(String url, Object... objects) {
+                super.onClickBlank(url, objects);
+                if(gsyVideoPlayer.getGSYVideoManager().isPlaying()) {
+                    gsyVideoPlayer.getGSYVideoManager().pause();
+                }else{
+                    gsyVideoPlayer.getGSYVideoManager().start();
+                }
             }
         });
     }
-
-
 }

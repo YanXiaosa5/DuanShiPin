@@ -4,7 +4,6 @@ package com.jumang.shortvideo.fragment;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +11,6 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.jumang.shortvideo.R;
 import com.jumang.shortvideo.SApplication;
@@ -35,9 +33,9 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static android.support.v7.widget.RecyclerView.SCROLL_STATE_DRAGGING;
-import static android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE;
-import static android.support.v7.widget.RecyclerView.SCROLL_STATE_SETTLING;
+import static android.widget.AbsListView.OnScrollListener.SCROLL_STATE_IDLE;
+import static com.umeng.socialize.shareboard.widgets.SocializeViewPager.SCROLL_STATE_DRAGGING;
+import static com.umeng.socialize.shareboard.widgets.SocializeViewPager.SCROLL_STATE_SETTLING;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -245,7 +243,6 @@ public class MainFragment extends BaseFragment {
                     }
                     return;
                 }
-
             }
         }
         GSYVideoManager.releaseAllVideos();

@@ -22,6 +22,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * 详细的频道列表
+ */
 public class ChannelDetailActivity extends BaseActivity {
     @BindView(R.id.video_list)
     RecyclerView recyclerView;

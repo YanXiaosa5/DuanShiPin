@@ -3,10 +3,10 @@ package com.jumang.shortvideo.adapter;
 import android.content.Context;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.util.MultiTypeDelegate;
-import com.jumang.shortvideo.GlideApp;
 import com.jumang.shortvideo.R;
 import com.jumang.shortvideo.bean.HistoryBean;
 
@@ -39,7 +39,7 @@ public class HistoryAdapter extends BaseQuickAdapter<HistoryBean, BaseViewHolder
                 break;
             case HistoryBean.CONTENT:
                 holder.setText(R.id.title, videoBean.getVideoTitle());
-                GlideApp.with(context)
+                Glide.with(context)
                         .load(videoBean.getVideoImg())
                         .transition(withCrossFade())
                         .into((ImageView) holder.getView(R.id.image));

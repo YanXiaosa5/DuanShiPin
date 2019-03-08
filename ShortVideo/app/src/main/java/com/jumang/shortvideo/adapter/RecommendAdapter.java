@@ -13,9 +13,9 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.util.MultiTypeDelegate;
-import com.jumang.shortvideo.GlideApp;
 import com.jumang.shortvideo.R;
 import com.jumang.shortvideo.api.Api;
+import com.jumang.shortvideo.base.GSYVideoCallBack;
 import com.jumang.shortvideo.bean.HomeVideoBean;
 import com.jumang.shortvideo.utils.MUtils;
 import com.jumang.shortvideo.views.CircleImageView;
@@ -52,6 +52,7 @@ public class RecommendAdapter extends BaseQuickAdapter<HomeVideoBean, BaseViewHo
 
     @Override
     protected void convert(BaseViewHolder holder, HomeVideoBean videoBean) {
+
         switch (holder.getItemViewType()) {
             case 0:
                 setVideoControl(holder, videoBean.getVideoUrl(), videoBean.getVideoTitle(), videoBean.getVideoImg());
@@ -112,7 +113,7 @@ public class RecommendAdapter extends BaseQuickAdapter<HomeVideoBean, BaseViewHo
                 } else {
                     holder.getView(R.id.image_re_ad).setVisibility(View.VISIBLE);
                     holder.getView(R.id.video_view).setVisibility(View.GONE);
-                    GlideApp.with(context)
+                    Glide.with(context)
                             .load(videoBean.getAdImg())
                             .transition(withCrossFade())
                             .into((ImageView) holder.getView(R.id.image_re_ad));
@@ -137,8 +138,10 @@ public class RecommendAdapter extends BaseQuickAdapter<HomeVideoBean, BaseViewHo
         //设置返回键
         gsyVideoPlayer.getBackButton().setVisibility(View.GONE);
         //设置全屏按键功能
-        gsyVideoPlayer.getFullscreenButton().setOnClickListener(v ->
-                gsyVideoPlayer.startWindowFullscreen(context, false, true));
+//        gsyVideoPlayer.getFullscreenButton().setOnClickListener(v ->
+//                gsyVideoPlayer.startWindowFullscreen(context, false, true));
+        //2018/10/10  修改于燕潇洒(本身已经是全屏了)
+        gsyVideoPlayer.getFullscreenButton().setVisibility(View.GONE);
         //防止错位设置
         gsyVideoPlayer.setPlayTag(TAG);
         gsyVideoPlayer.setPlayPosition(holder.getAdapterPosition());
@@ -155,24 +158,41 @@ public class RecommendAdapter extends BaseQuickAdapter<HomeVideoBean, BaseViewHo
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setImageResource(R.mipmap.default_video_bg);
 
-        GlideApp.with(context)
+        Glide.with(context)
                 .load(videoImg)
                 .transition(withCrossFade())
                 .into(imageView);
         gsyVideoPlayer.setThumbImageView(imageView);
 
-        gsyVideoPlayer.setVideoAllCallBack(new GSYSampleCallBack() {
-            @Override
-            public void onClickStop(String url, Object... objects) {
-                super.onClickStop(url, objects);
-                //Toast.makeText(context, "onClickStop", Toast.LENGTH_SHORT).show();
-            }
-        });
         RelativeLayout.LayoutParams lpTop = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         gsyVideoPlayer.getTopView().setLayoutParams(lpTop);
         gsyVideoPlayer.getTopView().setPadding(20, 60, 20, 20);
         gsyVideoPlayer.setAutoFullWithSize(false);
-        gsyVideoPlayer.setDismissControlTime(1000);
+        gsyVideoPlayer.setDismissControlTime(2000);
+        /*
+        *   2018/10/10 修改于燕潇洒
+        * */
+        gsyVideoPlayer.getStartButton().setVisibility(View.GONE);//设置播放按钮一开始不显示
+        gsyVideoPlayer.setThumbPlay(true);//设置触摸封面播放
+        gsyVideoPlayer.setLooping(true);
+        gsyVideoPlayer.setVideoAllCallBack(new GSYVideoCallBack() {
+
+            @Override
+            public void onClickBlank(String url, Object... objects) {
+                super.onClickBlank(url, objects);
+                System.out.println(gsyVideoPlayer.getGSYVideoManager().isPlaying()+"===");
+                if(gsyVideoPlayer.getGSYVideoManager().isPlaying()) {
+                    gsyVideoPlayer.getGSYVideoManager().pause();
+                }else{
+                    gsyVideoPlayer.getGSYVideoManager().start();
+                }
+            }
+
+            @Override
+            public void onAutoComplete(String url, Object... objects) {
+                super.onAutoComplete(url, objects);
+            }
+        });
     }
 }

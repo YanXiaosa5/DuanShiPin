@@ -122,13 +122,18 @@ public abstract class ResultCallback<T> extends Callback<T> {
                 if (customJson) {
                     return null;
                 } else {
+                    //获取json对象
                     JSONObject obj = new JSONObject(string);
                     String data = "";
                     if (obj.has("data")) {
+                        //从json对象中取出data数据体
                         data = obj.getString("data");
                     }
+                    //取出code
                     final int status = obj.getInt("code");
+                    //取出message信息
                     final String message = obj.getString("message");
+                    //这一步将取出来的data数据进行解密
                     String finalData = getResult(data);
                     OkHttpUtils.getInstance().getDelivery().execute(() -> onSuccessString(finalData, message, status));
 

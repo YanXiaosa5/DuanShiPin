@@ -10,10 +10,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.Toast;
 
 import com.jumang.shortvideo.R;
-import com.jumang.shortvideo.SApplication;
 import com.jumang.shortvideo.base.BaseActivity;
 import com.jumang.shortvideo.base.NetStateChangeObserver;
 import com.jumang.shortvideo.base.NetStateChangeReceiver;
@@ -23,7 +23,6 @@ import com.jumang.shortvideo.fragment.ChannelFragment;
 import com.jumang.shortvideo.fragment.MainFragment;
 import com.jumang.shortvideo.fragment.MineFragment;
 import com.jumang.shortvideo.fragment.RecommendFragment;
-import com.jumang.shortvideo.utils.DeviceUtils;
 import com.jumang.shortvideo.utils.MUtils;
 import com.jumang.shortvideo.utils.NetworkUtils;
 import com.jumang.shortvideo.utils.UpgradeHelper;
@@ -31,7 +30,6 @@ import com.jumang.shortvideo.views.CustomViewPager;
 import com.jumang.shortvideo.views.NavBottomView;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
 import com.umeng.analytics.MobclickAgent;
-import com.umeng.commonsdk.UMConfigure;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +70,6 @@ public class MainActivity extends BaseActivity implements NetStateChangeObserver
         }
 
         initView();
-
     }
 
     @Override

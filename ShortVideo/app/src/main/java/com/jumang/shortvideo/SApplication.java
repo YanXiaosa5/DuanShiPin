@@ -2,10 +2,12 @@ package com.jumang.shortvideo;
 
 import android.app.Application;
 
+import com.bumptech.glide.annotation.GlideModule;
 import com.jumang.shortvideo.api.OkHttpUtils.OkHttpUtils;
 import com.jumang.shortvideo.base.NetStateChangeReceiver;
 import com.meituan.android.walle.ChannelInfo;
 import com.meituan.android.walle.WalleChannelReader;
+import com.shuyu.gsyvideoplayer.utils.Debuger;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.PlatformConfig;
@@ -21,7 +23,6 @@ import okhttp3.OkHttpClient;
  * Created by steven on 2017/10/23.
  * Email-songzhonghua_1987@msn.com
  */
-
 public class SApplication extends Application {
 
     private static SApplication myApplication;
@@ -35,6 +36,9 @@ public class SApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        Debuger.enable();
+
         myApplication = this;
         OkHttpUtils.initClient(new OkHttpClient.Builder().build());
 
@@ -58,8 +62,6 @@ public class SApplication extends Application {
         MobclickAgent.openActivityDurationTrack(false);
 
         NetStateChangeReceiver.registerReceiver(this);
-
-
 
     }
 

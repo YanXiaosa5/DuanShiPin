@@ -40,7 +40,7 @@ import static android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE;
 import static android.support.v7.widget.RecyclerView.SCROLL_STATE_SETTLING;
 
 /**
- * A simple {@link Fragment} subclass.
+ * 推荐
  */
 public class RecommendFragment extends BaseFragment {
 
@@ -114,17 +114,20 @@ public class RecommendFragment extends BaseFragment {
      * 添加监听
      */
     public void setListener() {
+        //加载
         recommendAdapter.setOnLoadMoreListener(() -> {
             currentPage += 1;
             bindData();
         }, recyclerView);
 
+        //刷新
         refresh.setOnRefreshListener(() -> {
             currentPage = 1;
             videoBeans.clear();
             bindData();
         });
 
+        //滑动监听
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             boolean scrollState = false;
 
@@ -144,6 +147,7 @@ public class RecommendFragment extends BaseFragment {
                     case SCROLL_STATE_SETTLING: //惯性滚动
                         scrollState = true;
                         break;
+                        default:break;
                 }
             }
 
@@ -193,7 +197,6 @@ public class RecommendFragment extends BaseFragment {
 
             GSYVideoManager.releaseAllVideos();
         }
-
     }
 
     private String TAG = RecommendFragment.class.getSimpleName();
@@ -201,8 +204,8 @@ public class RecommendFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
-        GSYVideoManager.onPause();
         MobclickAgent.onPageEnd(TAG);
+        GSYVideoManager.onPause();
     }
 
     @Override

@@ -2,16 +2,18 @@ package com.jumang.shortvideo.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.jumang.shortvideo.GlideApp;
+import com.bumptech.glide.Glide;
 import com.jumang.shortvideo.R;
 import com.jumang.shortvideo.api.Api;
 import com.jumang.shortvideo.base.BaseActivity;
+import com.jumang.shortvideo.base.GSYVideoCallBack;
 import com.jumang.shortvideo.bean.HomeVideoBean;
 import com.jumang.shortvideo.utils.MUtils;
 import com.jumang.shortvideo.views.CircleImageView;
@@ -68,7 +70,7 @@ public class VideoDetailActivity extends BaseActivity {
 //        imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
 //                ViewGroup.LayoutParams.MATCH_PARENT));
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        GlideApp.with(this)
+        Glide.with(this)
                 .load(videoBean.getVideoImg())
                 .into(imageView);
         videoPlayer.setThumbImageView(imageView);
@@ -77,8 +79,9 @@ public class VideoDetailActivity extends BaseActivity {
         videoPlayer.getBackButton().setVisibility(View.INVISIBLE);
 //        videoPlayer.getTitleTextView().setVisibility(View.VISIBLE);
         //设置全屏按键功能
-        videoPlayer.getFullscreenButton().setOnClickListener(v ->
-                videoPlayer.startWindowFullscreen(this, false, true));
+//        videoPlayer.getFullscreenButton().setOnClickListener(v ->
+//                videoPlayer.startWindowFullscreen(this, false, true));
+        videoPlayer.getFullscreenButton().setVisibility(View.GONE);
         //防止错位设置
         videoPlayer.setPlayTag(TAG);
         //是否根据视频尺寸，自动选择竖屏全屏或者横屏全屏
@@ -92,7 +95,7 @@ public class VideoDetailActivity extends BaseActivity {
         //time.setText(String.format("%ss", videoBean.get()));
         playCount.setText(String.valueOf(String.format("%s次观看", MUtils.getNumWan(videoBean.getViewCount()))));
 
-        GlideApp.with(this)
+        Glide.with(this)
                 .load(videoBean.getAuthorAvatar())
                 .into(userAvatar);
 
@@ -100,6 +103,32 @@ public class VideoDetailActivity extends BaseActivity {
 
         videoPlayer.setUp(videoBean.getVideoUrl(), true, null,
                 null, videoBean.getVideoTitle());
+
+        /**
+         * 2018/10/10  修改于燕潇洒
+         */
+        videoPlayer.setThumbPlay(true);//设置触摸封面播放
+        videoPlayer.setLooping(true);
+        videoPlayer.setVideoAllCallBack(new GSYVideoCallBack() {
+
+            @Override
+            public void onClickBlank(String url, Object... objects) {
+                super.onClickBlank(url, objects);
+                System.out.println(videoPlayer.getGSYVideoManager().isPlaying()+"===");
+                if(videoPlayer.getGSYVideoManager().isPlaying()) {
+                    videoPlayer.getGSYVideoManager().pause();
+                }else{
+                    videoPlayer.getGSYVideoManager().start();
+                }
+            }
+
+            @Override
+            public void onAutoComplete(String url, Object... objects) {
+                super.onAutoComplete(url, objects);
+            }
+        });
+
+
         videoPlayer.getStartButton().performClick();
 
         share.setOnClickListener(view -> {
@@ -132,6 +161,7 @@ public class VideoDetailActivity extends BaseActivity {
         RelativeLayout.LayoutParams lpTop = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         videoPlayer.getTopView().setLayoutParams(lpTop);
         videoPlayer.getTopView().setPadding(0, 25, 20, 20);
+
 //        videoPlayer.setGSYVideoProgressListener(new GSYVideoProgressListener() {
 //            @Override
 //            public void onProgress(int progress, int secProgress, int currentPosition, int duration) {
